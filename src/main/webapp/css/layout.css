@@ -1,0 +1,276 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* box-sizing:
+        default: content-box (콘텐츠영역에 폭과높이를 적용)
+        프로퍼티에 border-box를 적용하면 콘텐츠 영역, 
+        padding, border가 포함된 영역을 
+        width / height 프로퍼티의 대상으로 지정할 수 있다 */
+}
+body{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    color: darkblue;
+}
+div#wrap{
+    width:90%;
+    max-width: 1024px; /* 최대 폭을 1024px로 제한 */
+    margin:auto;
+    height:100vh; /* vh: viewport height 1vh = viewport 높이의 1% (vw)*/
+    /* border:1px solid lightgray;
+    background-color:beige; */
+}
+
+div.cls{
+    clear: both;    /* float 속성 해제 */
+}
+
+/* header */
+header{
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+header img{
+    width: 90%;
+    margin: auto;
+}
+
+/* nav */
+nav{
+    background-color: #dfdfdf;
+    border-radius: 5px;
+    height: 33px;
+    padding: 5px;
+}
+nav>ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+nav>ul>li{
+    float: left;
+    padding: 0 15px 0 0;    /* top right bottom left */
+}
+nav ul li a{
+    display: block;
+    text-decoration: none;
+    padding: 2px 20px 3px 20px;
+    color: rgb(50, 50, 50)
+}
+nav ul li a:hover{
+    background-color: #16ab2d;
+    color: white;
+    border-radius: 5px;
+}
+
+/* article */
+article{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 75%;
+    float: left;
+    height: 70vh;
+    overflow: scroll;
+    /* -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    /* scrollbar-width: none; /* 파이어폭스 */
+}
+
+article::-webkit-scrollbar {
+	display: none;
+}
+
+article section{
+    border: 1px solid lightskyblue;
+    border-radius: 5px;
+    width: 45%;
+    /* float: left; */
+    margin: 10px;
+    padding: 10px;
+}
+article section:nth-child(2n+1){
+    float: left;
+}
+article section:nth-child(2n){
+    float: right;
+}
+
+/* aside */
+aside{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 24.5%;
+    float: right;
+    height: 70vh;
+}
+aside nav{
+    border: none;
+    background: none;
+}
+aside nav ul{
+    list-style-type: none;
+}
+aside nav ul li{
+    padding: 0 5px;
+    width: 90%;
+    margin: auto;
+}
+aside nav ul li a{
+    padding: 5px 0;
+}
+aside nav ul li a:hover{
+    background-color: transparent; /* 투명하게 */
+    color: black;
+    font-weight: bold;
+}
+
+/* footer */
+footer{
+    background-color: lightgoldenrodyellow;
+    height: 30px;
+    padding: 5px 10px;
+    line-height: 20px;  /* 여러줄이면 계산해서 맞춰야 함 */
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+div.container {
+	padding: 1em;
+	text-align: center;
+	width: 100%;
+}
+
+div.error {
+	width: 60%;
+	margin: auto;
+	height: 20vh;
+	background-color: #efefef;
+	color: red;	
+}
+
+table {
+		border-collapse: collapse;
+		color: black;
+}
+
+#userTable {
+	width: 80%;
+	margin: 2em auto;
+}
+
+.m1 {
+	background-color: #BAD7E9;
+	padding: 5px;
+}
+
+.m2 {
+	text-align: left;
+	padding: 5px;
+}
+.m2 input {
+	width: 50%;
+	padding: 5px;
+}
+
+.m2 button {
+	padding: 5px;
+	width: 30%;
+	background-color: #FCFFE7;
+	border: 1px solid silver;
+	border-radius: 5px;
+}
+
+.m3 {
+	text-align: center;
+}
+
+.m3 button {
+	padding: 5px;
+	margin: 2px 0;
+	width: 20%;
+	background-color: #2B3467;
+	color: white;
+	border: 1px solid silver;
+	border-radius: 5px;
+}
+
+#hp1, #hp2, #hp3 {
+	width: 20%;
+	padding: 5px;
+}
+
+#addr1, #addr2 {
+	width: 80%;
+}
+
+span.ck {
+	font-size: 0.8em;
+	color: #EB455F
+}
+
+#userTable {
+	width: 90%;
+}
+
+.m4 {
+	background-color: #BAD7E9;
+	text-align: center;
+	padding: 5px;
+}
+
+.mstate0 {
+	color: #362FD9;
+}
+
+.mstate-1 {
+	color: #159895;
+}
+
+.mstate-2 {
+	color: #DF2E38;
+}
+
+.mstate9 {
+	color: #FFB84C;
+}
+
+input.radio_btn {
+	width: 10%;
+	text-align: left;
+}
+
+div#loginDiv {
+	width: 60%;
+	margin: auto;
+	font-size: 0.9em;
+}
+
+#loginDiv table {
+	width: 100%;
+	margin: 1em auto;
+}
+
+#loginDiv td {
+	padding: 4px;
+}
+
+#saveId {
+	width: 10%;
+	margin-right: 5px;
+}
+
+#login a{
+	background-color: #3A98B9;
+	border-radius: 5px;
+} 
+
+#login a:hover{
+    background-color: #16ab2d;
+    color: white;
+    border-radius: 5px;
+}
