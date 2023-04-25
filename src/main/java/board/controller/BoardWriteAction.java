@@ -19,7 +19,7 @@ public class BoardWriteAction extends AbstractAction {
 	public void execute(HttpServletRequest req, HttpServletResponse res) 
 	throws Exception {
 		// 1. post방식일 때 한글처리 ==> 나중에 필터 만들어서 처리할 것
-		req.setCharacterEncoding("utf-8");
+		//req.setCharacterEncoding("utf-8");
 		
 		// 2. 파일 업로드 처리 ==> 라이브러리 다운로드 후
 		// 업로드 디렉토리 절대경로로 얻기 

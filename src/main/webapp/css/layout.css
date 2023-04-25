@@ -163,6 +163,10 @@ table {
 	margin: 2em auto;
 }
 
+#userTable td {
+	padding: 5px;
+}
+
 .m1 {
 	background-color: #BAD7E9;
 	padding: 5px;

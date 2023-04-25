@@ -74,6 +74,7 @@
 		1) method= post여야 함. 
 		2) post방식일 겅우 인고딩 방식(enctype)이 2가지가 있는데
 			1. application/x-www-form-urlencoded (디폴트)
+				=> 이 경우는 첨부파일명만 서버에 전송된다.
 			2. multipart/form-data ===> 외우기!!
 				=> 파일 이름과 함께 파일 데이터가 서버에 전송된다.
 	 	-->

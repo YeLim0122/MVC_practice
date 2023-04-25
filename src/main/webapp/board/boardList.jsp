@@ -117,7 +117,15 @@
 				-->
 				<c:forEach var="vo" items="${boardArr}">
 					<li>${vo.getNum()}</li>
-					<li><a href="boardView.do?num=a">${vo.subject}</a></li>
+					<li>
+						<a href="boardView.do?num=${vo.num}">${vo.subject}
+							<c:if test="${vo.filesize>0}">
+								<span class='attach'>
+									<img src='images/attach.png' style="width: 15px;">
+								</span>
+							</c:if>
+						</a>
+					</li>
 					<li>${vo.userid}</li>
 					<li>
 						<fmt:formatDate value="${vo.wdate}" pattern="yy-MM-dd"/>
