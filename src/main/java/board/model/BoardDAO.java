@@ -50,6 +50,27 @@ public class BoardDAO {
 	}	// listBoard() -------------------------
 	
 	
+	public List<BoardVO> listBoard(int start, int end) throws SQLException {
+		try {
+			con = DBUtil.getCon();
+
+			StringBuilder buf = new StringBuilder("SELECT * FROM (")
+					.append(" SELECT rownum rn, A.* FROM")
+					.append(" (SELECT * FROM board ORDER BY num DESC) A)")
+					.append(" WHERE rn BETWEEN ? AND ?");
+			String sql = buf.toString();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, start);
+			ps.setInt(2, end);
+			rs = ps.executeQuery();
+			return makeList(rs);
+		}
+		finally {
+			close();
+		}
+	}
+	
+	
 	public List<BoardVO> makeList(ResultSet rs) throws SQLException {
 		List<BoardVO> arr = new ArrayList<>();
 		while(rs.next()) {

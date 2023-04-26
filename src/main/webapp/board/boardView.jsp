@@ -54,9 +54,12 @@
 			</tr>
 			<tr>
 				<td colspan="4">
-					<a href="boardList.do">글 목록</a>|
-					<a href="#" onclick="goEdit()">수정</a>|
-					<a href="#" onclick="goDel()">삭제</a>
+					<a href="boardList.do">글 목록</a>
+					<%-- 로그인한 사람과 작성자가 같다면 수정, 삭제 링크 출력 --%>
+					<c:if test="${loginUser.userid eq board.userid}">
+						|<a href="#" onclick="goEdit()">수정</a>|
+						<a href="#" onclick="goDel()">삭제</a>
+					</c:if>
 				</td>
 			</tr>
 		</table>
@@ -77,9 +80,12 @@
 	}	
 	
 	const goDel = function() {
-		bf.action='user/boardDel.do';
-		bf.method='post';
-		bf.submit();
+		let yn = confirm('정말 삭제할까요?');
+		if(yn) {
+			bf.action='user/boardDel.do';
+			bf.method='post';
+			bf.submit();
+		}
 	}
 </script>
 

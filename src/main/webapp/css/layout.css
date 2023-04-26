@@ -129,7 +129,7 @@ aside nav ul li a:hover{
 
 /* footer */
 footer{
-    background-color: lightgoldenrodyellow;
+    background-color: #dfdfdf;
     height: 30px;
     padding: 5px 10px;
     line-height: 20px;  /* 여러줄이면 계산해서 맞춰야 함 */

@@ -140,15 +140,24 @@
 		<br><br>
 		<div class="pageWrap">
 			<ul class="paging">
-				<li><a>◀</a></li>
-				<li class='current'><a>1</a></li>
-				<li><a>2</a></li>
-				<li><a>▶</a></li>
+				<li><a href="boardList.do?cpage=${cpage-1}">◀</a></li>
+				
+					<%-- <li class='current'><a>1</a></li> --%>
+				<c:forEach var="i" begin="1" end="${pageCount}">
+					<c:if test="${cpage eq i}">
+						<li class='current'><a href="boardList.do?cpage=${i}">${i}</a></li>
+					</c:if>
+					<c:if test="${cpage ne i}">
+						<li><a href="boardList.do?cpage=${i}">${i}</a></li>
+					</c:if>
+				</c:forEach>
+				
+				<li><a href="boardList.do?cpage=${cpage+1}">▶</a></li>
 			</ul>
 		</div>
 		<br><br>
 		<div>
-			총 게시글 수: ${totalCount} 개, 현재 <span class="cpage">1</span> / 총 pages
+			총 게시글 수: ${totalCount} 개, 현재 <span class="cpage">${cpage}</span> / 총 ${pageCount} pages
 		</div>
 	</div>
 	
