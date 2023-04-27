@@ -68,6 +68,33 @@ public class BoardDAO {
 		finally {
 			close();
 		}
+	}	// listBoard(start, end) --------------------------
+	
+	
+	public List<BoardVO> findBoard(int start, int end, String findType, String findKeyword) 
+	throws SQLException {
+		try {
+			con = DBUtil.getCon();
+			String colName=getColumnName(findType);	// 검색유형 관련한 컬럼명 얻어오기
+			
+			StringBuilder buf = new StringBuilder("SELECT * FROM (")
+					.append(" SELECT rownum rn, A.* FROM")
+					.append(" (SELECT * FROM board WHERE "+colName+" like ? ")
+					.append(" ORDER BY num DESC) A ) ")
+					.append(" WHERE rn BETWEEN ? AND ?");
+			String sql = buf.toString();
+			System.out.println(sql);
+			ps = con.prepareStatement(sql);
+			ps.setString(1, "%"+findKeyword+"%");
+			ps.setInt(2, start);
+			ps.setInt(3, end);
+			
+			rs = ps.executeQuery();
+			return makeList(rs);
+			
+		} finally {
+			close();
+		}
 	}
 	
 	
@@ -90,14 +117,38 @@ public class BoardDAO {
 		
 		return arr;
 	}	// makeList() --------------------------
+	
+	
+	public String getColumnName(String type) {
+		String colName="";
+		switch(type) {
+		case "1" : colName="subject"; break;
+		case "2" : colName="userid"; break;
+		case "3" : colName="content"; break;
+		}
+		return colName;
+	}	// getColumnName() -------------------------------
+	
 
-	public int getTotalCount() throws SQLException {
+	public int getTotalCount(String type, String keyword) throws SQLException {
 		try {
 			con = DBUtil.getCon();
+			//String sql = "SELECT count(num) FROM board";
 			
-			String sql = "SELECT count(num) FROM board";
-			
+			StringBuilder buf = new StringBuilder("SELECT count(num) cnt FROM board ");
+			if (! (type.trim().isEmpty() || keyword.trim().isEmpty()) ) {
+				// 검색유형과 검색어가 들어왔다면
+				String colName=getColumnName(type);
+				buf.append(" WHERE "+colName+" like ?");
+			}
+			String sql = buf.toString();
+			System.out.println(sql);
 			ps = con.prepareStatement(sql);
+			
+			if (! (type.trim().isEmpty() || keyword.trim().isEmpty()) ) {
+				ps.setString(1, "%"+keyword+"%");
+			}
+			
 			rs = ps.executeQuery();
 			rs.next();
 			int cnt = rs.getInt(1);
@@ -215,6 +266,5 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 	}// close() --------------------------
-
 
 }

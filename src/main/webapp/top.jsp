@@ -19,6 +19,10 @@
     <!-- 경로에 /를 붙이고 경로를 넣으면 (http://localhost:9090)까지 잡힘. -->
 	<!-- ===> "/" => "webapps/ROOT" -->
     
+    <!-- jquery 라이브러리 CDN 방식으로 참조 ------------------- -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- ----------------------------------------------------- -->
+    
 </head>
 <body>
     <div id="wrap">
